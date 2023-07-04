@@ -19,8 +19,14 @@ public class DataGenerator {
     }
 
     public static String generateCity(String locale) {
-        Faker faker = new Faker(new Locale(locale));
-        return faker.address().city();
+        String[] cities = new String[]{"Самара", "Казань", "Уфа", "Москва", "Санкт-Петербург", "Рязань",
+                "Ростов-на-Дону", "Майкоп", "Чита", "Воронеж", "Краснодар", "Тверь", "Астрахань",
+                "Пермь", "Омск", "Пенза", "Севастополь", "Саратов", "Ижевск", "Ульяновск", "Оренбург",
+                "Новосибирск", "Великий Новогород", "Чита", "Петропавловск-Камчатский", "Кемерово", "Брянск",
+                "Киров", "Якутскск", "Челябинск", "Кострома","Ярославль", "Нарьян-Мар", "Владивосток"};
+            Faker faker = new Faker(new Locale(locale));
+            return cities[faker.number().numberBetween(0, cities.length - 1)];
+
     }
     public static String generateName(String locale) {
         Faker faker = new Faker(new Locale(locale));
