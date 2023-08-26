@@ -1,5 +1,6 @@
 package ru.netology.delivery.test;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,9 +12,31 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
 
 
 class DeliveryTest {
+
+    @BeforeAll
+    static void setupD() {
+        WebDriverManager.chromedriver().setup();
+    }
+
+    @BeforeAll
+    static void setUpAll(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll(){
+
+        SelenideLogger.removeListener("allure");
+    }
 
     @BeforeEach
     void setup() {
